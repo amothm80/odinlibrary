@@ -56,8 +56,26 @@ let addBookCancel = document.querySelector("#addBookCancel");
 
 addBookDialogButton.addEventListener("click",()=>{
     addBookDialog.showModal();
-}
-)
+})
+
+addBookAction.addEventListener("click",()=>{
+  // let author = document.querySelector("input[name=author]");
+  // let title  = document.querySelector("input[name=title]");
+  // let pages  = document.querySelector("input[name=pages]");
+  // let read  = document.querySelector("select[name=read]");
+  let author = document.getElementById("bookauthor").value;
+  let title = document.getElementById("booktitle").value;
+  let pages = document.getElementById("bookpages").value;
+  let read = document.getElementById("bookread").value;
+  book = new Book(author, title, parseInt(pages), read == "true");
+  addBookToLibrary(book);
+  addBookDialog.close();
+  init();
+})
+
+addBookCancel.addEventListener("click",()=>{
+  addBookDialog.close();
+})
 
 function processRemoveButton(btn) {
   let id = btn.getAttribute("id");

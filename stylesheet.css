@@ -68,14 +68,7 @@ header{
     margin-bottom: 15px;;
 }
 
-dialog{
+dialog div{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 10px;
-}
-
-dialog h4{
-    grid-column: 1/3;
 }
   
