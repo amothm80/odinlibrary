@@ -59,10 +59,6 @@ addBookDialogButton.addEventListener("click",()=>{
 })
 
 addBookAction.addEventListener("click",()=>{
-  // let author = document.querySelector("input[name=author]");
-  // let title  = document.querySelector("input[name=title]");
-  // let pages  = document.querySelector("input[name=pages]");
-  // let read  = document.querySelector("select[name=read]");
   let author = document.getElementById("bookauthor").value;
   let title = document.getElementById("booktitle").value;
   let pages = document.getElementById("bookpages").value;
