@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="source.js" defer></script>
-    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="stylesheet.css" />
     <title>Odin Library</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header><h1>Odin Library</h1></header>
-    <div id="actions"><button type="button">Add Book</button></div>
-    <div id="booklist">
-    </div>
-    
-</body>
+    <div id="actions"><button id="addBookDialogButton">Add Book</button></div>
+    <div id="booklist"></div>
+
+    <dialog id="addBookDialog">
+      <h4>Fill in the book information</h4>
+      <label for="title">Title: </label><input type="text" name="title" />
+      <label for="author">Author: </label><input type="text" name="author" />
+      <label for="pages">Pages: </label><input type="text" name="pages" />
+      <label for="read">Read? </label
+      ><select name="read">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+      <button id="addBookAction">Add Book</button>
+      <button id="addBookCancel">Cancel</button>
+    </dialog>
+  </body>
 </html>
