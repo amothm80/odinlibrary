@@ -13,21 +13,24 @@
     <div id="booklist"></div>
 
     <dialog id="addBookDialog">
-
-        <h4>Fill in the book information</h4>
-        <div>
-          <label for="title">Title: </label><input required id="booktitle" type="text" name="title" />
-          <label for="author">Author: </label><input required id="bookauthor" type="text" name="author" />
-          <label for="pages">Pages: </label><input required id="bookpages" type="text" name="pages" />
-          <label for="read">Read? </label
-          ><select required id="bookread" name="read">
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-          <button  id="addBookAction">Add Book</button>
-          <button id="addBookCancel">Cancel</button>
-        </div>
-
+      <h4>Fill in the book information</h4>
+      <!-- <div> -->
+      <form action="">
+        <label for="title">Title: </label
+        ><input id="booktitle" type="text" name="title" required autofocus/>
+        <label for="author">Author: </label
+        ><input id="bookauthor" type="text" name="author" required />
+        <label for="pages">Pages: </label
+        ><input id="bookpages" type="number" name="pages" required />
+        <label for="read">Read? </label
+        ><select id="bookread" name="read" required>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+        <button type="submit" formmethod="dialog" id="addBookAction">Add Book</button>
+        <button id="addBookCancel">Cancel</button>
+      </form>
+      <!-- </div> -->
     </dialog>
   </body>
 </html>

@@ -28,6 +28,7 @@ function displayBooks(myLibrary) {
             <h4><bold>Pages: </bold></h4><p>${book.pages}</p>
             <h4><bold>Read: </bold></h4><p>${readtext}</p>
             <button class="removeButton" id="${i}">Remove Book</button>
+            <button class="markButton" id="${i}">Mark Read/Unread</button>
         </div>`;
     // console.log(book.info())
   }
@@ -41,10 +42,17 @@ addBookToLibrary(book);
 function init() {
   displayBooks(myLibrary);
   let removeBookButtons = document.querySelectorAll(".removeButton");
+  let markBookButtons = document.querySelectorAll(".markButton");
 
   for (let btn of removeBookButtons) {
     btn.addEventListener("click", () => {
       processRemoveButton(btn);
+    });
+  }
+
+  for (let btn of markBookButtons) {
+    btn.addEventListener("click", () => {
+      processMarkButton(btn);
     });
   }
 }
@@ -54,29 +62,53 @@ let addBookDialogButton = document.querySelector("#addBookDialogButton");
 let addBookAction = document.querySelector("#addBookAction");
 let addBookCancel = document.querySelector("#addBookCancel");
 
-addBookDialogButton.addEventListener("click",()=>{
-    addBookDialog.showModal();
-})
+addBookDialogButton.addEventListener("click", () => {
+  document.getElementById("bookauthor").value = "";
+  document.getElementById("booktitle").value = "";
+  document.getElementById("bookpages").value = "";
+  document.getElementById("bookread").value = false;
+  addBookDialog.showModal();
+});
 
-addBookAction.addEventListener("click",()=>{
+addBookDialog.addEventListener("close", () => {
+//   openCheck(addBookDialog);
+  handleUserInput(addBookDialog.returnValue);
+});
+
+// addBookAction.addEventListener("click",()=>{
+//   let author = document.getElementById("bookauthor").value;
+//   let title = document.getElementById("booktitle").value;
+//   let pages = document.getElementById("bookpages").value;
+//   let read = document.getElementById("bookread").value;
+//   book = new Book(author, title, parseInt(pages), read == "true");
+//   addBookToLibrary(book);
+//   init();
+// })
+
+function handleUserInput(returnValue) {
   let author = document.getElementById("bookauthor").value;
   let title = document.getElementById("booktitle").value;
   let pages = document.getElementById("bookpages").value;
   let read = document.getElementById("bookread").value;
-  book = new Book(author, title, parseInt(pages), read == "true");
+  let book = new Book(author, title, parseInt(pages), read == "true");
   addBookToLibrary(book);
-  addBookDialog.close();
   init();
-})
+}
 
-addBookCancel.addEventListener("click",()=>{
+addBookCancel.addEventListener("click", () => {
   addBookDialog.close();
-})
+});
 
 function processRemoveButton(btn) {
   let id = btn.getAttribute("id");
   myLibrary.splice(parseInt(id), 1);
   init();
 }
+
+function processMarkButton(btn) {
+    let id = btn.getAttribute("id");
+    myLibrary[id].read = !myLibrary[id].read ;
+    init();
+  }
 
 init();

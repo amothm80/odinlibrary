@@ -68,7 +68,12 @@ header{
     margin-bottom: 15px;;
 }
 
-dialog div{
+dialog form{
     display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5px;
 }
-  
+
+input:invalid{
+    border-color: read;
+}
