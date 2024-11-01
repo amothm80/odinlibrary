@@ -71,7 +71,7 @@ addBookDialogButton.addEventListener("click", () => {
 });
 
 addBookDialog.addEventListener("close", () => {
-//   openCheck(addBookDialog);
+  //   openCheck(addBookDialog);
   handleUserInput(addBookDialog.returnValue);
 });
 
@@ -86,17 +86,24 @@ addBookDialog.addEventListener("close", () => {
 // })
 
 function handleUserInput(returnValue) {
-  let author = document.getElementById("bookauthor").value;
-  let title = document.getElementById("booktitle").value;
-  let pages = document.getElementById("bookpages").value;
-  let read = document.getElementById("bookread").value;
-  let book = new Book(author, title, parseInt(pages), read == "true");
-  addBookToLibrary(book);
-  init();
+  if (returnValue == "submitBook") {
+    let author = document.getElementById("bookauthor").value;
+    let title = document.getElementById("booktitle").value;
+    let pages = document.getElementById("bookpages").value;
+    let read = document.getElementById("bookread").value;
+    let book = new Book(author, title, parseInt(pages), read == "true");
+    addBookToLibrary(book);
+    init();
+  }
 }
 
 addBookCancel.addEventListener("click", () => {
   addBookDialog.close();
+});
+
+addBookAction.addEventListener("click", (e) => {
+  e.preventDefault();
+  addBookDialog.close("submitBook");
 });
 
 function processRemoveButton(btn) {
@@ -106,9 +113,9 @@ function processRemoveButton(btn) {
 }
 
 function processMarkButton(btn) {
-    let id = btn.getAttribute("id");
-    myLibrary[id].read = !myLibrary[id].read ;
-    init();
-  }
+  let id = btn.getAttribute("id");
+  myLibrary[id].read = !myLibrary[id].read;
+  init();
+}
 
 init();
