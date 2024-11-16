@@ -2,8 +2,6 @@ import "./styles.css";
 import { Book, Library, loadLibrary } from "./book.js";
 import { eventHandler } from "./eventHandler.js";
 
-
-
 // addBookDialog.addEventListener("close", () => {
 //   //   openCheck(addBookDialog);
 //   handleUserInput(addBookDialog.returnValue);
@@ -59,39 +57,55 @@ export function displayBooks(library) {
     const bookcard = document.createElement("div");
     bookcard.className = "bookcard";
 
-    const title = document.createElement("h4");
-    const author = document.createElement("h4");
-    const pages = document.createElement("h4");
-    const read = document.createElement("h4");
-    title.innerHTML = `<bold>Title: </bold><p>${book.getBook().title}</p>`;
-    author.innerHTML = `<bold>Author: </bold><p>${book.getBook().author}</p>`;
-    pages.innerHTML = `<bold>Pages: </bold><p>${book.getBook().pages}</p>`;
-    read.innerHTML = `<bold>Read: </bold><p>${
-      book.getBook().read ? "Yes" : "No"
-    }</p>`;
+    const bookcardBody = document.createElement("div");
+    bookcardBody.className = "bookcard-body";
 
+    const bookcardControls = document.createElement("div");
+    bookcardControls.className = 'bookcard-controls'
+
+    const titleLabel = document.createElement("p");
+    const authorLabel = document.createElement("p");
+    const pagesLabel = document.createElement("p");
+    const readLabel = document.createElement("p");
+    const title = document.createElement("p");
+    const author = document.createElement("p");
+    const pages = document.createElement("p");
+    const read = document.createElement("p");
+    titleLabel.innerHTML = `<bold>Title: </bold>`;
+    title.innerHTML = `${book.getBook().title}`;
+    authorLabel.innerHTML = `<bold>Author: </bold>`;
+    author.innerHTML = `${book.getBook().author}`;
+    pagesLabel.innerHTML = `<bold>Pages: </bold>`;
+    pages.innerHTML = `${book.getBook().pages}`;
+    readLabel.innerHTML = `<bold>Read: </bold>`;
+      read.innerHTML = `${book.getBook().read ? "Yes" : "No" }</p>`;
 
     const removeButton = document.createElement("button");
     removeButton.id = "remove-button";
     removeButton.dataset.index = index;
-    removeButton.innerHTML = "Remove Button";
+    removeButton.innerHTML = "Remove Book";
 
     const markButton = document.createElement("button");
     markButton.id = "mark-button";
     markButton.dataset.index = index;
-    markButton.innerHTML = "Mark Button";
+    markButton.innerHTML = "Mark Read/Unread";
 
-    bookcard.appendChild(title);
-    bookcard.appendChild(author);
-    bookcard.appendChild(pages);
-    bookcard.appendChild(read);
-    bookcard.appendChild(removeButton);
-    bookcard.appendChild(markButton);
+    bookcardBody.appendChild(titleLabel);
+    bookcardBody.appendChild(title);
+    bookcardBody.appendChild(authorLabel);
+    bookcardBody.appendChild(author);
+    bookcardBody.appendChild(pagesLabel);
+    bookcardBody.appendChild(pages);
+    bookcardBody.appendChild(readLabel);
+    bookcardBody.appendChild(read);
+    bookcardControls.appendChild(removeButton);
+    bookcardControls.appendChild(markButton);
 
-    booklist.appendChild(bookcard);
+    bookcard.appendChild(bookcardBody);
+    bookcard.appendChild(bookcardControls);
 
+    booklist.appendChild(bookcard)
   });
-
 }
 
 (() => {
@@ -101,11 +115,13 @@ export function displayBooks(library) {
 
   if (savedLibrary) {
     savedLibrary.forEach((book) => {
-      library.addBookToLibrary(Book(book.title, book.author, book.pages, book.read));
+      library.addBookToLibrary(
+        Book(book.title, book.author, book.pages, book.read)
+      );
     });
   }
 
-  eventHandler(library)
+  eventHandler(library);
 
   // library.addBookToLibrary(Book("lotr", "jrr tolkien", 295));
   // library.addBookToLibrary(Book("the trial", "franz kafka", 190));
