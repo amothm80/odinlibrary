@@ -13,26 +13,31 @@
     <div id="booklist"></div>
 
     <dialog id="add-book-dialog">
-      <h4>Fill in the book information</h4>
-      <!-- <div> -->
-        <!-- required fields will only validate on submit event -->
-         <!-- ie submit button with submit event listener on the form itself -->
-      <form id="add-book-form" method="dialog">
-          <label for="booktitle">Title: </label
-          ><input id="booktitle" name="booktitle" type="text" required autofocus />
-        <label for="bookauthor">Author: </label
-        ><input id="bookauthor" type="text" name="bookauthor" required />
-        <label for="bookpages">Pages: </label
-        ><input id="bookpages" type="number" name="bookpages" required />
-        <label for="bookread">Read? </label
-        ><select id="bookread" name="bookread" required>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
-        <button id="add-book-action" type="submit">Add Book</button>
-        <button id="add-book-cancel" type="button">Cancel</button>
-      </form>
+      <div id="dialog-body">
+        <h4>Fill in the book information</h4>
+        <!-- <div> -->
+          <!-- required fields will only validate on submit event -->
+           <!-- ie submit button with submit event listener on the form itself -->
+        <form id="add-book-form" method="dialog">
+            <label for="booktitle">Title: </label
+            ><input id="booktitle" name="booktitle" type="text"  required autofocus />
+          <label for="bookauthor">Author: </label
+          ><input id="bookauthor" type="text" name="bookauthor" required  />
+          <label for="bookpages">Pages: </label
+          ><input id="bookpages" type="number" name="bookpages"  required />
+          <label for="bookread">Read? </label
+          ><select id="bookread" name="bookread" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+          <button id="add-book-action" type="submit">Add Book</button>
+          <button id="add-book-cancel" type="button">Cancel</button>
+        </form>
+      </div>
       <!-- </div> -->
+      <!-- <div id="errors">Test Error Message</div> -->
     </dialog>
+    
   </body>
+ 
 </html>

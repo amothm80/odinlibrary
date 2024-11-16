@@ -1,6 +1,7 @@
 import "./styles.css";
 import { Book, Library, loadLibrary } from "./book.js";
 import { eventHandler } from "./eventHandler.js";
+import { errorEventHandler } from "./errorEventHandler.js";
 
 // addBookDialog.addEventListener("close", () => {
 //   //   openCheck(addBookDialog);
@@ -122,6 +123,7 @@ export function displayBooks(library) {
   }
 
   eventHandler(library);
+  // errorEventHandler();
 
   // library.addBookToLibrary(Book("lotr", "jrr tolkien", 295));
   // library.addBookToLibrary(Book("the trial", "franz kafka", 190));
